@@ -7,13 +7,6 @@ services:
     restart: on-failure
     ports:
       - 8000:8000
-    labels:
-      - traefik.enable=true
-      - traefik.backend=plumber
-      - traefik.frontend.rule=Host:compute.${DOMAIN}
-      - traefik.docker.network=web
-    depends_on:
-      - traefik
     networks:
       - web
       - internal
