@@ -6,8 +6,9 @@ MAINTAINER Sammy Barasa <barsamms@gmail.com>
 
 RUN apt-get update && apt-get install -y gnupg2
 
-## Install Java 
-RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" \
+## Install Java
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EB9B1D8886F44E2A \
+    && echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" \
       | tee /etc/apt/sources.list.d/webupd8team-java.list \
     &&  echo "deb-src http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" \
       | tee -a /etc/apt/sources.list.d/webupd8team-java.list \
