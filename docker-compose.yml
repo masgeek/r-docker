@@ -3,7 +3,7 @@ version: '3.3'
 services:
   plumber:
     container_name: plumber
-    image: tsobu / r-java:latest
+    image: tsobu/r-java:latest
     restart: on-failure
     ports:
       - 8000:8000
