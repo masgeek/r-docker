@@ -65,4 +65,7 @@ RUN apt-get update \
  	&& rm -rf /tmp/downloaded_packages/ /tmp/*.rds \
  	&& rm -rf /var/lib/apt/lists/*
 
-CMD ["bash"]
+RUN echo "Reconfiguring java"
+RUN R CMD javareconf
+
+CMD ["R"]
