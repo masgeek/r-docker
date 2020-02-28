@@ -14,12 +14,12 @@ RUN echo "deb http://ppa.launchpad.net/webupd8team/java/ubuntu trusty main" \
     && apt-key adv --keyserver keyserver.ubuntu.com --recv-keys EB9B1D8886F44E2A \
     && echo "oracle-java8-installer shared/accepted-oracle-license-v1-1 select true" \
         | /usr/bin/debconf-set-selections \
-    && apt-get update \
-    && apt-get install -y oracle-java8-installer \
-    && update-alternatives --display java \
-    && rm -rf /var/lib/apt/lists/* \
-    && apt-get clean \
-    && R CMD javareconf
+    #&& apt-get update \
+    #&& apt-get install -y oracle-java8-installer \
+    #&& update-alternatives --display java \
+    #&& rm -rf /var/lib/apt/lists/* \
+    #&& apt-get clean \
+    #&& R CMD javareconf
 
 ## make sure Java can be found in rApache and other daemons not looking in R ldpaths
 RUN echo "/usr/lib/jvm/java-8-oracle/jre/lib/amd64/server/" > /etc/ld.so.conf.d/rJava.conf
