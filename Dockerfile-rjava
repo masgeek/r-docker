@@ -1,6 +1,6 @@
 ## Start with the official rocker image (lightweight Debian)
 #FROM rocker/r-base:latest
-FROM tsobu/rbase:3.6.2
+FROM tsobu/r-base:3.6.2
 
 MAINTAINER Sammy Barasa <barsamms@gmail.com>
 
