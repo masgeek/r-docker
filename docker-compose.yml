@@ -1,0 +1,35 @@
+version: '3.3'
+
+services:
+  plumber:
+    container_name: plumber
+    image: tsobu / r-java:latest
+    restart: on-failure
+    ports:
+      - 8000:8000
+    labels:
+      - traefik.enable=true
+      - traefik.backend=plumber
+      - traefik.frontend.rule=Host:compute.${DOMAIN}
+      - traefik.docker.network=web
+    depends_on:
+      - traefik
+    networks:
+      - web
+      - internal
+  dozzle:
+    container_name: dozzle
+    image: amir20/dozzle:latest
+    environment:
+      DOZZLE_TAILSIZE: 100
+      LOGSENE_ENABLED: "false"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - 9999:8080
+
+networks:
+  internal:
+    external: false
+  web:
+    external: true
